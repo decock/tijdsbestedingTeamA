@@ -1,0 +1,37 @@
+body {
+	text-align: center;
+}
+
+.headerzone {
+	border: 1px solid red;
+	height: 50px;
+	color: green;
+	font-size: 22px; 
+	text-align: center;
+	padding-top: 5px;
+}
+
+.linkerzone {
+	border: 1px solid red;
+	margin-top: 10px;
+	padding: 15px;
+	width: 230px;
+	float: left;
+}
+
+.contentzone {
+	border: 1px solid red;
+	width: 850px;
+	float: left;
+	
+}
+
+.menubutton {
+	width: 200px;
+	height: 50px;
+	margin-bottom: 15px;
+}
+
+.dockpanel td {
+   padding: 3px;
+}
