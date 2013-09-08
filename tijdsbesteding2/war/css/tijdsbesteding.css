@@ -1,14 +1,6 @@
 body {
 	text-align: center;
-}
-
-.headerzone {
-	border: 1px solid red;
-	height: 50px;
-	color: green;
-	font-size: 22px; 
-	text-align: center;
-	padding-top: 5px;
+	background: lightgrey;
 }
 
 .linkerzone {
@@ -20,7 +12,7 @@ body {
 }
 
 .contentzone {
-	border: 1px solid red;
+	border: 1px solid blue;
 	width: 850px;
 	float: left;
 	
@@ -32,6 +24,24 @@ body {
 	margin-bottom: 15px;
 }
 
-.dockpanel td {
-   padding: 3px;
+.mydatepicker {
+	width: 100px;
+	height: 100px;	
 }
+
+.dagNietOK {
+	background: red;
+	color: white;
+}
+
+.listpersonen {
+	width: 150px;
+	border: 1px solid grey;
+}
+
+.mgTop {
+	margin-top: 10px;
+}
+
+
+

@@ -1,2 +1,0 @@
-serviceClass: be.teama.tijdsbesteding.client.GreetingService
-path: E1C0AE535FCF33374C9CD3A97C37D83C.gwt.rpc
