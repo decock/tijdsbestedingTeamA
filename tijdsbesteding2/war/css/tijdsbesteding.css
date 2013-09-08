@@ -43,5 +43,15 @@ body {
 	margin-top: 10px;
 }
 
+.onderdeelregistratiepanel {
+	margin-top: 15px;
+	width: 250px;
+	margin-left: 10px;
+}
+
+.normalfieldlabel {
+	width: 75px;
+	text-align: right;
+}
 
 
