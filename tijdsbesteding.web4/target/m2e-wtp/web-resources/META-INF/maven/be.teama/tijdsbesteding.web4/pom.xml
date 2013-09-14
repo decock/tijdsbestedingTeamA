@@ -15,6 +15,8 @@
   <properties>
     <!-- Convenience property to set the GWT version -->
     <gwtVersion>2.5.1</gwtVersion>
+    <tijdsbesteding.domain.api.version>0.0.1-SNAPSHOT</tijdsbesteding.domain.api.version>
+    
     <!-- GWT needs at least java 1.5 -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +54,14 @@
       <classifier>sources</classifier>
       <scope>test</scope>
     </dependency>
+    
+    <!-- domain.api -->
+    <dependency>
+      <groupId>be.teama</groupId>
+      <artifactId>tijdsbesteding.domain.api</artifactId>
+      <version>${tijdsbesteding.domain.api.version}</version>
+    </dependency>
+    
   </dependencies>
 
   <build>

@@ -15,6 +15,7 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
+  <inherits name='tijdsbesteding.domain.api.Domain'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='be.teama.client.MyModule' />

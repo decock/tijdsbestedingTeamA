@@ -1,5 +1,6 @@
 package be.teama.server;
 
+import tijdsbesteding.domain.api.snapshot.PersoonSnapshot;
 import be.teama.client.GreetingService;
 import be.teama.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -28,7 +29,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
     userAgent = escapeHtml(userAgent);
 
     return "Hello, " + input + "!<br><br>I am running " + serverInfo
-        + ".<br><br>It looks like you are using:<br>" + userAgent;
+        + ".<br><br>It looks like you are using:<br>" + userAgent + "<br>persoon: " + new PersoonSnapshot(1l, "naam").toString();
   }
 
   /**
