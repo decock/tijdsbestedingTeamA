@@ -1,18 +1,24 @@
 package be.teama.tijdsbesteding.client.contentzone;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import be.teama.tijdsbesteding.client.service.TijdsbestedingService;
+import be.teama.tijdsbesteding.client.service.TijdsbestedingServiceAsync;
 import be.teama.tijdsbesteding.client.widgets.NormalFieldLabel;
 import be.teama.tijdsbesteding.domain.Persoon;
 
 import com.google.gwt.cell.client.AbstractCell;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.cellview.client.CellList;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -25,10 +31,13 @@ import com.google.gwt.view.client.ProvidesKey;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 
+import domain.api.PersoonSnapshot;
+
 public class TijdsbestedingInvoerenZone extends HorizontalPanel {
-	private static final List<Persoon> personen = Arrays.asList(new Persoon(1,
-			"bart"), new Persoon(2, "jozef"), new Persoon(3, "jeroen"),
-			new Persoon(4, "nick"));
+	// private static final List<Persoon> personen = Arrays.asList(new
+	// Persoon(1,
+	// "bart"), new Persoon(2, "jozef"), new Persoon(3, "jeroen"),
+	// new Persoon(4, "nick"));
 
 	public TijdsbestedingInvoerenZone() {
 		super();
@@ -103,24 +112,27 @@ public class TijdsbestedingInvoerenZone extends HorizontalPanel {
 
 	private VerticalPanel lijstMetPersonen(final VerticalPanel invoerenPanel,
 			final VerticalPanel samenvattingPanel) {
-		ProvidesKey<Persoon> keyProvider = new ProvidesKey<Persoon>() {
-			public Object getKey(Persoon item) {
+		TijdsbestedingServiceAsync service = (TijdsbestedingServiceAsync) GWT
+				.create(TijdsbestedingService.class);
+		ProvidesKey<PersoonSnapshot> keyProvider = new ProvidesKey<PersoonSnapshot>() {
+			public Object getKey(PersoonSnapshot item) {
 				// Always do a null check.
 				return (item == null) ? null : item.getId();
 			}
 		};
+		CellList<PersoonSnapshot> cellList = new CellList<PersoonSnapshot>(
+				new PersoonCell(), keyProvider);
+		service.getPersonen(new PersoonSnapshotsCallback(cellList));
 
-		CellList<Persoon> cellList = new CellList<Persoon>(new PersoonCell(),
-				keyProvider);
-		cellList.setRowCount(personen.size());
-		cellList.setRowData(personen);
+		
 		cellList.addStyleName("listpersonen");
-		final SingleSelectionModel<Persoon> selectionModel = new SingleSelectionModel<Persoon>();
+		final SingleSelectionModel<PersoonSnapshot> selectionModel = new SingleSelectionModel<PersoonSnapshot>();
 		cellList.setSelectionModel(selectionModel);
 		selectionModel
 				.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
 					public void onSelectionChange(SelectionChangeEvent event) {
-						Persoon selected = selectionModel.getSelectedObject();
+						PersoonSnapshot selected = selectionModel
+								.getSelectedObject();
 						if (selected != null) {
 							invoerenPanel.setVisible(true);
 							samenvattingPanel.add(new Label(
@@ -133,6 +145,29 @@ public class TijdsbestedingInvoerenZone extends HorizontalPanel {
 		personenPanel.addStyleName("onderdeelregistratiepanel");
 		personenPanel.add(cellList);
 		return personenPanel;
+	}
+	
+	private class PersoonSnapshotsCallback implements AsyncCallback<List<PersoonSnapshot>> {
+		private CellList<PersoonSnapshot> cellList;
+		
+		
+		public PersoonSnapshotsCallback(CellList<PersoonSnapshot> cellList) {
+			super();
+			this.cellList = cellList;
+		}
+
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onSuccess(List<PersoonSnapshot> result) {
+			cellList.setRowCount(result.size());
+			cellList.setRowData(result);
+		}
+		
 	}
 
 	private HorizontalPanel datumpanel() {
@@ -152,11 +187,11 @@ public class TijdsbestedingInvoerenZone extends HorizontalPanel {
 		return datumPanel;
 	}
 
-	private class PersoonCell extends AbstractCell<Persoon> {
+	private class PersoonCell extends AbstractCell<PersoonSnapshot> {
 
 		@Override
 		public void render(com.google.gwt.cell.client.Cell.Context context,
-				Persoon persoon, SafeHtmlBuilder sb) {
+				PersoonSnapshot persoon, SafeHtmlBuilder sb) {
 			sb.appendEscaped(persoon.getNaam());
 
 		}

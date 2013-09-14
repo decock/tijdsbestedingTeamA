@@ -1,0 +1,2 @@
+serviceClass: be.teama.client.GreetingService
+path: B051BE75BAAA205C7084655459E1A212.gwt.rpc

@@ -5,4 +5,15 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   
+   <!-- Servlets -->
+  <servlet>
+    <servlet-name>tijdsbestedingServlet</servlet-name>
+    <servlet-class>be.teama.tijdsbesteding.server.TijdsbestedingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>tijdsbestedingServlet</servlet-name>
+    <url-pattern>/tijdsbesteding/tijdsbestedingService</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

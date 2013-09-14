@@ -1,0 +1,4 @@
+<module rename-to='domain'>
+  <inherits name="com.google.gwt.user.User"/>
+  <source path="tijdsbesteding.domain"/>
+</module>
