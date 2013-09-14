@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module>
-  <!-- Inherit our applications main module.                      -->
-  <inherits name='be.teama.tijdsbesteding.myModule' />
-
-  <!-- Specify the path to any remote services.                   -->
-  <servlet path="/myModule/greet" class="be.teama.tijdsbesteding.server.GreetingServiceImpl" />
-
-</module>
