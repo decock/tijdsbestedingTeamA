@@ -4,6 +4,14 @@
   <artifactId>tijdsbesteding.domain.test</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>3.2.4.RELEASE</version>
+    </dependency>
+</dependencies>
+  
   <build>    
   <resources>
     <resource>

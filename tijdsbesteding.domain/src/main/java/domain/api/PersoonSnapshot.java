@@ -1,5 +1,7 @@
 package domain.api;
 
+import org.springframework.stereotype.Service;
+
 public class PersoonSnapshot {
 
 	private Long id;

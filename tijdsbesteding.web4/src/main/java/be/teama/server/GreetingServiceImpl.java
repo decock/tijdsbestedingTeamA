@@ -1,5 +1,9 @@
 package be.teama.server;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import tijdsbesteding.domain.api.facade.PersoonSnapshotFacade;
 import tijdsbesteding.domain.api.snapshot.PersoonSnapshot;
 import be.teama.client.GreetingService;
 import be.teama.shared.FieldVerifier;
@@ -9,8 +13,12 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
  * The server side implementation of the RPC service.
  */
 @SuppressWarnings("serial")
+@Service
 public class GreetingServiceImpl extends RemoteServiceServlet implements
     GreetingService {
+	
+	@Autowired
+	private PersoonSnapshotFacade persoonSnapshotFacade;
 
   public String greetServer(String input) throws IllegalArgumentException {
     // Verify that the input is valid.

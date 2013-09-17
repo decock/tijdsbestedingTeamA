@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='be.teama.Tijdsbesteding' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/Tijdsbesteding/greet" class="be.teama.server.GreetingServiceImpl" />
+
+</module>
